@@ -3,24 +3,116 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Install iOS Profile</title>
-  <script>
-    // Trigger download automatically on iOS
-    window.onload = function () {
-      const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-      if (isiOS) {
-        window.location.href = "https://github.com/ethantheDeveloper220/super-duper-invention/raw/refs/heads/main/P12%20checker%20free%20Web%20Clip%20Profile%20(1).mobileconfig";
-      }
-    };
-  </script>
+  <title>Krava Signer Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #007aff;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #e0e0e0;
+      padding: 10px 0;
+    }
+    nav button {
+      background: none;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    nav button:hover, nav button.active {
+      background-color: #ccc;
+      border-radius: 5px;
+    }
+    .tab {
+      display: none;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .tab.active {
+      display: block;
+    }
+    .file-list {
+      display: inline-block;
+      text-align: left;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .file-item {
+      margin: 10px 0;
+      font-size: 1.1em;
+    }
+    .file-item a {
+      color: #007aff;
+      text-decoration: none;
+    }
+    .file-item a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
-<body style="text-align: center; font-family: sans-serif; margin-top: 100px;">
-  <h1>Install iOS Configuration Profile</h1>
-  <p>If the install prompt doesn't appear automatically, tap the button below:</p>
-  <a 
-    href="https://github.com/ethantheDeveloper220/super-duper-invention/raw/refs/heads/main/P12%20checker%20free%20Web%20Clip%20Profile%20(1).mobileconfig"
-    style="display: inline-block; padding: 12px 24px; background: #007aff; color: white; border-radius: 8px; text-decoration: none; font-size: 18px;">
-    Install Profile
-  </a>
+<body>
+
+  <header>
+    <h1>⚙️ Krava Signer Hub</h1>
+  </header>
+
+  <nav>
+    <button class="tab-button active" onclick="showTab('socials')">Socials</button>
+    <button class="tab-button" onclick="showTab('configs')">Configs</button>
+    <button class="tab-button" onclick="showTab('guides')">Guides</button>
+  </nav>
+
+  <div id="socials" class="tab active">
+    <h2>📱 Social Links</h2>
+    <p><a href="https://twitter.com/yourusername" target="_blank">Twitter</a></p>
+    <p><a href="https://discord.gg/yourdiscordinvite" target="_blank">Discord</a></p>
+    <p><a href="https://github.com/yourgithub" target="_blank">GitHub</a></p>
+  </div>
+
+  <div id="configs" class="tab">
+    <h2>📄 Config Files</h2>
+    <div class="file-list">
+      <div class="file-item">
+        <strong>KS Guide Hub:</strong> 
+        <a href="https://ethanthedeveloper220.github.io/super-duper-invention/Ks-guide-Hub-icons%20V1.mobileconfig">Install Profile</a>
+      </div>
+      <div class="file-item">
+        <strong>P12 Checker:</strong> 
+        <a href="https://ethanthedeveloper220.github.io/super-duper-invention/P12%20checker%20free%20Web%20Clip%20Profile%20(1).mobileconfig">Install Profile</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="guides" class="tab">
+    <h2>📘 Guides</h2>
+    <p>Coming soon...</p>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+
 </body>
 </html>
