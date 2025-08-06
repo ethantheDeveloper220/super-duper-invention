@@ -239,35 +239,35 @@
 			<key>IsRemovable</key>
 			<true/>
 			<key>Label</key>
-			<string>Ks guide Hub</string>
+			<string>Krava signer Hub</string>
 			<key>PayloadDescription</key>
 			<string>Configures settings for a web clip</string>
 			<key>PayloadDisplayName</key>
 			<string>Web Clip</string>
 			<key>PayloadIdentifier</key>
-			<string>com.apple.webClip.managed.D73BAE03-D012-4431-8BDC-251BED56EF10</string>
+			<string>com.apple.webClip.managed.7115F77A-0406-49C6-851E-9BDE3EDF707F</string>
 			<key>PayloadType</key>
 			<string>com.apple.webClip.managed</string>
 			<key>PayloadUUID</key>
-			<string>D73BAE03-D012-4431-8BDC-251BED56EF10</string>
+			<string>7115F77A-0406-49C6-851E-9BDE3EDF707F</string>
 			<key>PayloadVersion</key>
 			<integer>1</integer>
 			<key>Precomposed</key>
 			<true/>
 			<key>URL</key>
-			<string>https://bio.link/ksguides</string>
+			<string>https://ethanthedeveloper220.github.io/super-duper-invention/</string>
 		</dict>
 	</array>
 	<key>PayloadDisplayName</key>
-	<string>Icons for “Ks guide Hub”</string>
+	<string>Krava Signer Hub V1</string>
 	<key>PayloadIdentifier</key>
-	<string>wg-3.7B2BEEF2-B579-4380-B2FF-3C68CE13058F</string>
+	<string>wg-3.996AFB12-516C-4A5C-8430-87108B58F86C</string>
 	<key>PayloadRemovalDisallowed</key>
 	<false/>
 	<key>PayloadType</key>
 	<string>Configuration</string>
 	<key>PayloadUUID</key>
-	<string>A11610E6-C309-4742-A5BE-FDCCB5776B4D</string>
+	<string>2D04A351-EE2D-4A03-BB9F-8DDCC20388DE</string>
 	<key>PayloadVersion</key>
 	<integer>1</integer>
 </dict>
