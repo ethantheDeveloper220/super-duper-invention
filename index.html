@@ -4,111 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Krava Signer Hub</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-      animation: fadeInBody 1s ease-in;
-    }
-
-    @keyframes fadeInBody {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    header {
-      background-color: #007aff;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      animation: slideDown 0.5s ease-out;
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #e0e0e0;
-      padding: 10px 0;
-    }
-
-    nav button {
-      background: none;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    nav button:hover, nav button.active {
-      background-color: #ccc;
-      border-radius: 5px;
-      transform: scale(1.05);
-    }
-
-    .tab {
-      display: none;
-      padding: 40px 20px;
-      text-align: center;
-      animation: fadeInTab 0.5s ease;
-    }
-
-    @keyframes fadeInTab {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .tab.active {
-      display: block;
-    }
-
-    .file-list {
-      display: inline-block;
-      text-align: left;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      animation: fadeInList 0.6s ease;
-    }
-
-    @keyframes fadeInList {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .file-item {
-      margin: 15px 0;
-      font-size: 1.1em;
-    }
-
-    .file-item a {
-      color: #007aff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    .file-item a:hover {
-      text-decoration: underline;
-      color: #005fcc;
-    }
-
-    .section-header {
-      margin-top: 30px;
-      font-size: 1.3em;
-      color: #333;
-      border-top: 1px solid #ccc;
-      padding-top: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -122,48 +18,41 @@
     <button class="tab-button" onclick="showTab('guides', event)">Guides</button>
   </nav>
 
-  <div id="socials" class="tab active">
-    <h2>📱 Social Links</h2>
-    <p><a href="https://twitter.com/yourusername" target="_blank">Twitter</a></p>
-    <p><a href="https://discord.gg/yourdiscordinvite" target="_blank">Discord</a></p>
-    <p><a href="https://github.com/yourgithub" target="_blank">GitHub</a></p>
-  </div>
-
-  <div id="configs" class="tab">
-    <h2>📄 Config Files</h2>
-    <div class="file-list">
-      <div class="file-item">
-        <strong>KS Guide Hub:</strong> 
-        <a href="https://ethanthedeveloper220.github.io/super-duper-invention/Ks-guide-Hub-icons%20V1.mobileconfig">Install Profile</a>
+  <main>
+    <section id="socials" class="tab active">
+      <h2>📱 Social Links</h2>
+      <div class="card-list">
+        <a class="card" href="https://twitter.com/yourusername" target="_blank">🐦 Twitter</a>
+        <a class="card" href="https://discord.gg/yourdiscordinvite" target="_blank">💬 Discord</a>
+        <a class="card" href="https://github.com/yourgithub" target="_blank">🐙 GitHub</a>
       </div>
-      <div class="file-item">
-        <strong>P12 Checker:</strong> 
-        <a href="https://ethanthedeveloper220.github.io/super-duper-invention/P12%20checker%20free%20Web%20Clip%20Profile%20(1).mobileconfig">Install Profile</a>
-      </div>
-    </div>
+    </section>
 
-    <div class="section-header">📦 IPA Store</div>
-    <div class="file-list">
-      <div class="file-item">
-        <strong>IPA Store:</strong>
-        <a href="https://ethanthedeveloper220.github.io/super-duper-invention/IPAStore.mobileconfig">Install Profile</a>
+    <section id="configs" class="tab">
+      <h2>📄 Config Files</h2>
+      <div class="card-list">
+        <a class="card" href="https://ethanthedeveloper220.github.io/super-duper-invention/Ks-guide-Hub-icons%20V1.mobileconfig">
+          🧭 KS Guide Hub<br><small>Install Profile</small>
+        </a>
+        <a class="card" href="https://ethanthedeveloper220.github.io/super-duper-invention/P12%20checker%20free%20Web%20Clip%20Profile%20(1).mobileconfig">
+          🔐 P12 Checker<br><small>Install Profile</small>
+        </a>
+        <a class="card" href="https://ethanthedeveloper220.github.io/super-duper-invention/IPAStore.mobileconfig">
+          📦 IPA Store<br><small>Install Profile</small>
+        </a>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div id="guides" class="tab">
-    <h2>📘 Guides</h2>
-    <p>Coming soon...</p>
-  </div>
+    <section id="guides" class="tab">
+      <h2>📘 Guides</h2>
+      <p>Coming soon...</p>
+    </section>
+  </main>
 
   <script>
     function showTab(tabId, event) {
-      document.querySelectorAll('.tab').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      document.querySelectorAll('.tab-button').forEach(btn => {
-        btn.classList.remove('active');
-      });
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
       document.getElementById(tabId).classList.add('active');
       event.currentTarget.classList.add('active');
     }
