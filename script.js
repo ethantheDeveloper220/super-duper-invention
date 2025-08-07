@@ -1,3 +1,4 @@
+// Tab switching
 function showTab(tabId, event) {
   document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
   document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
@@ -5,53 +6,37 @@ function showTab(tabId, event) {
   event.currentTarget.classList.add('active');
 }
 
-const API_SIGN_URL = 'https://your-existing-signer-api.com/sign'; // Change this to your IPA signer API endpoint
+// Signing button placeholder
+document.addEventListener('DOMContentLoaded', () => {
+  const signBtn = document.getElementById('signButton');
+  const output = document.getElementById('signerOutput');
 
-const form = document.getElementById('signForm');
-const output = document.getElementById('output');
+  signBtn.addEventListener('click', async () => {
+    output.textContent = '';
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  output.textContent = "Signing in progress... please wait.";
+    const ipaFile = document.getElementById('ipaFile').files[0];
+    const p12File = document.getElementById('p12File').files[0];
+    const mobileProvisionFile = document.getElementById('mobileProvisionFile').files[0];
+    const p12Password = document.getElementById('p12Password').value;
 
-  const formData = new FormData();
-
-  const ipaFile = document.getElementById('ipaFile').files[0];
-  const p12File = document.getElementById('p12File').files[0];
-  const p12Password = document.getElementById('p12Password').value;
-  const mobileProvisionFile = document.getElementById('mobileProvisionFile').files[0];
-
-  if (!ipaFile || !p12File || !p12Password || !mobileProvisionFile) {
-    output.textContent = 'Please fill all required fields.';
-    return;
-  }
-
-  formData.append('ipa', ipaFile);
-  formData.append('p12', p12File);
-  formData.append('p12_password', p12Password);
-  formData.append('mobileprovision', mobileProvisionFile);
-
-  try {
-    const response = await fetch(API_SIGN_URL, {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (!response.ok) {
-      output.textContent = `Error: ${response.statusText}`;
+    if (!ipaFile || !p12File || !mobileProvisionFile) {
+      output.textContent = '⚠️ Please select all required files.';
+      return;
+    }
+    if (!p12Password) {
+      output.textContent = '⚠️ Please enter the P12 password.';
       return;
     }
 
-    const result = await response.json();
+    output.textContent = '🔄 Starting signing process...';
 
-    if (result.error) {
-      output.textContent = `Error: ${result.error}`;
-    } else if (result.download_url) {
-      output.innerHTML = `🎉 Signed IPA ready! <a href="${result.download_url}" target="_blank" rel="noopener">Download here (one-time use)</a>`;
-    } else {
-      output.textContent = 'Unexpected response from server.';
-    }
-  } catch (err) {
-    output.textContent = `Network or server error: ${err.message}`;
-  }
+    // NOTE: This is a placeholder.
+    // Here you would upload the files to your backend API or an external signer API
+    // and then handle the response (signed IPA URL or error)
+
+    // Simulate delay & success
+    setTimeout(() => {
+      output.textContent = '✅ IPA signed successfully! Download link:\nhttps://example.com/temp-signed-ipa.ipa (One-time use)';
+    }, 2500);
+  });
 });
