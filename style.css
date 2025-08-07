@@ -1,162 +1,216 @@
-/* Fonts & Base */
+/* === Base Reset === */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #0d0d0d;
-  color: #f0f0f0;
-  animation: fadeIn 0.5s ease-in;
-  padding-bottom: 50px;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0a0a0a, #111);
+  color: #f2f2f2;
+  line-height: 1.7;
+  padding-bottom: 80px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* === Animations === */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Header */
+/* === Header === */
 header {
-  background: #1e1e1e;
-  color: #00aaff;
   text-align: center;
-  padding: 30px 20px;
-  font-size: 1.8em;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  padding: 50px 20px 40px;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #00ffe7;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 255, 231, 0.07);
+  animation: fadeIn 0.7s ease;
 }
 
-/* Nav */
+/* === Navigation === */
 nav {
   display: flex;
   justify-content: center;
-  background: #141414;
-  padding: 10px;
-  border-bottom: 1px solid #222;
-}
-.tab-button {
-  background: none;
-  color: #ccc;
-  border: 1px solid transparent;
-  margin: 0 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 8px;
-}
-.tab-button:hover, .tab-button.active {
-  background: #1e1e1e;
-  color: #00aaff;
-  border-color: #00aaff;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 20px;
+  background: #161616;
+  border-bottom: 1px solid #2b2b2b;
 }
 
-/* Tabs */
-main {
-  padding: 30px 20px;
+.tab-button {
+  background: linear-gradient(145deg, #1e1e1e, #141414);
+  padding: 14px 34px;
+  border: 1px solid #2d2d2d;
+  border-radius: 14px;
+  font-size: 16px;
+  color: #bbb;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.25);
 }
+
+.tab-button:hover,
+.tab-button.active {
+  background: linear-gradient(145deg, #00ffe7, #00c9ff);
+  color: #111;
+  border-color: #00ffe7;
+  transform: scale(1.05);
+  box-shadow: 0 0 22px rgba(0, 255, 231, 0.35);
+}
+
+/* === Main Content === */
+main {
+  padding: 40px 20px;
+  animation: fadeIn 0.6s ease;
+}
+
+/* === Tab Content === */
 .tab {
   display: none;
-  animation: fadeIn 0.3s ease-in-out;
 }
 .tab.active {
   display: block;
+  animation: fadeIn 0.5s ease;
 }
 
-/* Cards */
+/* === Cards === */
 .card-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 28px;
+  margin-top: 30px;
 }
+
 .card {
-  background: #1a1a1a;
-  padding: 20px 30px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  padding: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 30px rgba(0, 255, 231, 0.05);
+  transition: 0.3s ease;
   text-align: center;
-  border: 1px solid #2c2c2c;
-  border-radius: 12px;
-  color: #f0f0f0;
   text-decoration: none;
-  font-size: 1.1em;
-  transition: all 0.25s ease;
-  width: 250px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-.card:hover {
-  background: #222;
-  border-color: #00aaff;
-  transform: scale(1.03);
-  color: #00aaff;
-}
-.card small {
-  display: block;
-  font-size: 0.85em;
-  color: #aaa;
-  margin-top: 5px;
-}
-
-/* Signer Card (form) */
-.signer-card {
-  background: #1a1a1a;
-  padding: 25px 30px;
-  border-radius: 12px;
-  border: 1px solid #2c2c2c;
-  width: 320px;
-  margin: 20px auto 0;
-  box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-.signer-card label {
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #00aaff;
-}
-.signer-card input[type="file"],
-.signer-card input[type="password"] {
-  background: #0d0d0d;
-  border: 1px solid #444;
-  border-radius: 6px;
   color: #eee;
-  padding: 10px;
-  font-size: 1em;
-  transition: border-color 0.25s ease;
-}
-.signer-card input[type="file"]:focus,
-.signer-card input[type="password"]:focus {
-  outline: none;
-  border-color: #00aaff;
-}
-.signer-card button {
-  background-color: #00aaff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px;
-  font-size: 1.1em;
-  color: #0d0d0d;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.signer-card button:hover {
-  background-color: #0088cc;
 }
 
-/* Output card */
-.output-card {
-  background: #111;
+.card:hover {
+  background: rgba(0, 255, 231, 0.06);
+  border-color: #00ffe7;
+  transform: translateY(-8px);
+  color: #00ffe7;
+}
+
+.card small {
+  margin-top: 12px;
+  font-size: 0.87rem;
+  color: #aaa;
+  display: block;
+}
+
+/* === Signer Form === */
+.signer-form {
+  max-width: 640px;
+  margin: 60px auto;
+  padding: 40px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 255, 231, 0.07);
+  animation: fadeIn 0.7s ease;
+}
+
+.signer-form label {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.signer-form input[type="file"],
+.signer-form input[type="password"] {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
   border-radius: 12px;
-  padding: 20px;
-  margin: 25px auto 0;
-  max-width: 320px;
-  color: #0ff;
-  font-family: monospace;
-  white-space: pre-wrap;
-  box-shadow: 0 0 10px #00aaffaa;
-  min-height: 80px;
-  user-select: text;
+  background: #222;
+  color: #fefefe;
+  margin-bottom: 20px;
+  border: none;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.signer-form input[type="file"]::file-selector-button {
+  background: #00ffe7;
+  color: #111;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.signer-form input[type="file"]::file-selector-button:hover {
+  background: #00d5c1;
+}
+
+.signer-form button {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #00ffe7, #00c9ff);
+  color: #111;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.signer-form button:hover {
+  background: linear-gradient(145deg, #00e6e6, #00b7ff);
+}
+
+.signer-form .note {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #999;
+  text-align: center;
+}
+
+/* === Footer === */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #0e0e0e;
+  color: #888;
+  text-align: center;
+  padding: 14px;
+  font-size: 0.9rem;
+  border-top: 1px solid #2a2a2a;
+  box-shadow: 0 -6px 16px rgba(0,0,0,0.2);
+}
+
+/* === Mobile === */
+@media (max-width: 600px) {
+  .tab-button {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+
+  .signer-form {
+    padding: 26px;
+  }
 }
