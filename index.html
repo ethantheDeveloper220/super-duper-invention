@@ -2,73 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Krava Signer Hub</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <header>
-    <h1>⚙️ Krava Signer Hub</h1>
-  </header>
+  <header>Krava Signer Hub</header>
 
   <nav>
-    <button class="tab-button active" onclick="showTab('socials', event)">Socials</button>
-    <button class="tab-button" onclick="showTab('configs', event)">Configs</button>
-    <button class="tab-button" onclick="showTab('guides', event)">Guides</button>
-    <button class="tab-button" onclick="showTab('signer', event)">Signer</button>
+    <button class="tab-button active" data-tab="signer">Signer</button>
+    <button class="tab-button" data-tab="social">Socials</button>
+    <button class="tab-button" data-tab="configs">Configs</button>
+    <button class="tab-button" data-tab="guides">Guides</button>
   </nav>
 
   <main>
-    <section id="socials" class="tab active">
-      <h2>📱 Social Links</h2>
+    <!-- Signer Tab -->
+    <section class="tab active" id="signer">
+      <form class="signer-form">
+        <label for="ipa">Upload IPA File</label>
+        <input type="file" id="ipa" accept=".ipa" />
+
+        <label for="p12">Upload .p12 Certificate</label>
+        <input type="file" id="p12" accept=".p12" />
+
+        <label for="mobileprovision">Upload .mobileprovision</label>
+        <input type="file" id="mobileprovision" accept=".mobileprovision" />
+
+        <label for="password">Certificate Password</label>
+        <input type="password" id="password" placeholder="Enter .p12 password" />
+
+        <button type="submit">Sign IPA</button>
+        <div class="note">Your files are processed securely and never stored.</div>
+      </form>
+    </section>
+
+    <!-- Socials Tab -->
+    <section class="tab" id="social">
       <div class="card-list">
-        <a class="card" href="https://twitter.com/yourusername" target="_blank">🐦 Twitter</a>
-        <a class="card" href="https://discord.gg/yourdiscordinvite" target="_blank">💬 Discord</a>
-        <a class="card" href="https://github.com/yourgithub" target="_blank">🐙 GitHub</a>
+        <a class="card" href="https://github.com" target="_blank">
+          GitHub
+          <small>github.com/yourprofile</small>
+        </a>
+        <a class="card" href="https://discord.gg/yourserver" target="_blank">
+          Discord
+          <small>Join our community</small>
+        </a>
+        <a class="card" href="https://twitter.com/yourhandle" target="_blank">
+          Twitter
+          <small>@yourhandle</small>
+        </a>
       </div>
     </section>
 
-    <section id="configs" class="tab">
-      <h2>📄 Config Files</h2>
+    <!-- Configs Tab -->
+    <section class="tab" id="configs">
       <div class="card-list">
-        <a class="card" href="https://ethanthedeveloper220.github.io/super-duper-invention/Ks-guide-Hub-icons%20V1.mobileconfig">
-          🧭 KS Guide Hub<br><small>Install Profile</small>
-        </a>
         <a class="card" href="https://ethanthedeveloper220.github.io/super-duper-invention/P12%20checker%20free%20Web%20Clip%20Profile%20(1).mobileconfig">
-          🔐 P12 Checker<br><small>Install Profile</small>
-        </a>
-        <a class="card" href="https://ethanthedeveloper220.github.io/super-duper-invention/IPAStore.mobileconfig">
-          📦 IPA Store<br><small>Install Profile</small>
+          P12 Checker
+          <small>Check if your p12 file is working</small>
         </a>
       </div>
     </section>
 
-    <section id="guides" class="tab">
-      <h2>📘 Guides</h2>
-      <p>Coming soon...</p>
-    </section>
-
-    <section id="signer" class="tab">
-      <h2>🖋️ IPA Signer</h2>
-      <div class="signer-card">
-        <label for="ipaFile">Select IPA file:</label>
-        <input type="file" id="ipaFile" accept=".ipa" />
-
-        <label for="p12File">Select P12 file:</label>
-        <input type="file" id="p12File" accept=".p12" />
-
-        <label for="mobileProvisionFile">Select MobileProvision file:</label>
-        <input type="file" id="mobileProvisionFile" accept=".mobileprovision" />
-
-        <label for="p12Password">P12 Password:</label>
-        <input type="password" id="p12Password" placeholder="Enter your password" />
-
-        <button id="signButton">Sign IPA</button>
+    <!-- Guides Tab -->
+    <section class="tab" id="guides">
+      <div class="card-list">
+        <a class="card" href="https://ethanthedeveloper220.github.io/super-duper-invention/Ks-guide-H">
+          KS Guide Hub
+          <small>Learn how to use Krava Signer</small>
+        </a>
       </div>
-      <pre id="signerOutput" class="output-card" aria-live="polite"></pre>
     </section>
   </main>
+
+  <footer>&copy; 2025 Krava Signer Hub. All rights reserved.</footer>
 
   <script src="script.js"></script>
 </body>
