@@ -1,42 +1,67 @@
-// Tab switching
-function showTab(tabId, event) {
-  document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-  document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-  document.getElementById(tabId).classList.add('active');
-  event.currentTarget.classList.add('active');
-}
+document.addEventListener("DOMContentLoaded", () => {
+  // Tab switching logic
+  const tabButtons = document.querySelectorAll(".tab-button");
+  const tabs = document.querySelectorAll(".tab");
 
-// Signing button placeholder
-document.addEventListener('DOMContentLoaded', () => {
-  const signBtn = document.getElementById('signButton');
-  const output = document.getElementById('signerOutput');
+  tabButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.getAttribute("data-tab");
 
-  signBtn.addEventListener('click', async () => {
-    output.textContent = '';
+      tabButtons.forEach((b) => b.classList.remove("active"));
+      tabs.forEach((tab) => tab.classList.remove("active"));
 
-    const ipaFile = document.getElementById('ipaFile').files[0];
-    const p12File = document.getElementById('p12File').files[0];
-    const mobileProvisionFile = document.getElementById('mobileProvisionFile').files[0];
-    const p12Password = document.getElementById('p12Password').value;
+      btn.classList.add("active");
+      document.getElementById(target).classList.add("active");
+    });
+  });
 
-    if (!ipaFile || !p12File || !mobileProvisionFile) {
-      output.textContent = '⚠️ Please select all required files.';
+  // Signer form logic
+  const signerForm = document.querySelector(".signer-form");
+
+  signerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const ipa = document.getElementById("ipa").files[0];
+    const p12 = document.getElementById("p12").files[0];
+    const mobileprovision = document.getElementById("mobileprovision").files[0];
+    const password = document.getElementById("password").value.trim();
+
+    if (!ipa || !p12 || !mobileprovision || !password) {
+      alert("Please fill in all fields and upload all required files.");
       return;
     }
-    if (!p12Password) {
-      output.textContent = '⚠️ Please enter the P12 password.';
-      return;
+
+    const formData = new FormData();
+    formData.append("ipa", ipa);
+    formData.append("p12", p12);
+    formData.append("mobileprovision", mobileprovision);
+    formData.append("password", password);
+
+    // Optional: show loading spinner here
+
+    try {
+      // 🚧 Replace the URL with your actual signer backend API endpoint
+      const response = await fetch("https://your-signer-api.example.com/sign", {
+        method: "POST",
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        const tempLink = result.downloadUrl;
+
+        // Create one-time-use download link
+        const note = document.createElement("div");
+        note.className = "note";
+        note.innerHTML = `<strong>Download Signed IPA:</strong> <a href="${tempLink}" target="_blank">${tempLink}</a><br><small>This link is one-time use only.</small>`;
+        signerForm.appendChild(note);
+      } else {
+        alert("Signing failed: " + (result.error || "Unknown error"));
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      alert("An error occurred while signing the IPA.");
     }
-
-    output.textContent = '🔄 Starting signing process...';
-
-    // NOTE: This is a placeholder.
-    // Here you would upload the files to your backend API or an external signer API
-    // and then handle the response (signed IPA URL or error)
-
-    // Simulate delay & success
-    setTimeout(() => {
-      output.textContent = '✅ IPA signed successfully! Download link:\nhttps://example.com/temp-signed-ipa.ipa (One-time use)';
-    }, 2500);
   });
 });
