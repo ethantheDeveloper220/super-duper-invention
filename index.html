@@ -2,92 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Krava Signer Hub</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header>
-    <h1>⚙️ Krava Signer Hub</h1>
-  </header>
+<header>
+  <h1>⚙️ Krava Signer Hub</h1>
+</header>
 
-  <nav>
-    <button class="tab-button active" onclick="showTab('socials', event)">Socials</button>
-    <button class="tab-button" onclick="showTab('configs', event)">Configs</button>
-    <button class="tab-button" onclick="showTab('guides', event)">Guides</button>
-    <button class="tab-button" onclick="showTab('signer', event)">IPA Signer</button>
-  </nav>
+<nav>
+  <button class="tab-button active" onclick="showTab('socials', event)">Socials</button>
+  <button class="tab-button" onclick="showTab('configs', event)">Configs</button>
+  <button class="tab-button" onclick="showTab('guides', event)">Guides</button>
+  <button class="tab-button" onclick="showTab('signer', event)">Signer</button>
+</nav>
 
-  <main>
-    <!-- Socials Tab -->
-    <section id="socials" class="tab active">
-      <h2>📱 Social Links</h2>
-      <div class="card-list">
-        <a class="card" href="https://twitter.com/yourusername" target="_blank">🐦 Twitter</a>
-        <a class="card" href="https://discord.gg/yourdiscordinvite" target="_blank">💬 Discord</a>
-        <a class="card" href="https://github.com/yourgithub" target="_blank">🐙 GitHub</a>
-      </div>
-    </section>
+<main>
+  <section id="socials" class="tab active">
+    <h2>📱 Social Links</h2>
+    <div class="card-list">
+      <a class="card" href="https://twitter.com/yourusername" target="_blank">🐦 Twitter</a>
+      <a class="card" href="https://discord.gg/yourdiscordinvite" target="_blank">💬 Discord</a>
+      <a class="card" href="https://github.com/yourgithub" target="_blank">🐙 GitHub</a>
+    </div>
+  </section>
 
-    <!-- Configs Tab -->
-    <section id="configs" class="tab">
-      <h2>📄 Config Files</h2>
-      <div class="card-list">
-        <a class="card" href="https://ethanthedeveloper220.github.io/super-duper-invention/Ks-guide-Hub-icons%20V1.mobileconfig">
-          🧭 KS Guide Hub<br><small>Install Profile</small>
-        </a>
-        <a class="card" href="https://ethanthedeveloper220.github.io/super-duper-invention/P12%20checker%20free%20Web%20Clip%20Profile%20(1).mobileconfig">
-          🔐 P12 Checker<br><small>Install Profile</small>
-        </a>
-        <a class="card" href="https://ethanthedeveloper220.github.io/super-duper-invention/IPAStore.mobileconfig">
-          📦 IPA Store<br><small>Install Profile</small>
-        </a>
-      </div>
-    </section>
+  <section id="configs" class="tab">
+    <h2>📄 Config Files</h2>
+    <div class="card-list">
+      <a class="card" href="https://ethanthedeveloper220.github.io/super-duper-invention/Ks-guide-Hub-icons%20V1.mobileconfig">
+        🧭 KS Guide Hub<br><small>Install Profile</small>
+      </a>
+      <a class="card" href="https://ethanthedeveloper220.github.io/super-duper-invention/P12%20checker%20free%20Web%20Clip%20Profile%20(1).mobileconfig">
+        🔐 P12 Checker<br><small>Install Profile</small>
+      </a>
+      <a class="card" href="https://ethanthedeveloper220.github.io/super-duper-invention/IPAStore.mobileconfig">
+        📦 IPA Store<br><small>Install Profile</small>
+      </a>
+    </div>
+  </section>
 
-    <!-- Guides Tab -->
-    <section id="guides" class="tab">
-      <h2>📘 Guides</h2>
-      <p>Coming soon...</p>
-    </section>
+  <section id="guides" class="tab">
+    <h2>📘 Guides</h2>
+    <p>Coming soon...</p>
+  </section>
 
-    <!-- Signer Tab -->
-    <section id="signer" class="tab">
-      <h2>🔏 IPA Signer</h2>
-      <form id="signerForm">
-        <label>📦 IPA File:<br><input type="file" name="ipa" accept=".ipa" required></label><br><br>
-        <label>🔐 P12 Certificate:<br><input type="file" name="p12" accept=".p12" required></label><br><br>
-        <label>📄 MobileProvision:<br><input type="file" name="mobileprovision" accept=".mobileprovision" required></label><br><br>
-        <button type="submit">Sign IPA</button>
-      </form>
-      <div id="downloadLink" style="margin-top:20px;"></div>
-    </section>
-  </main>
+  <section id="signer" class="tab">
+    <h2>🔏 IPA Signer</h2>
 
-  <script>
-    function showTab(tabId, event) {
-      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      event.currentTarget.classList.add('active');
-    }
+    <form id="signForm" enctype="multipart/form-data" autocomplete="off">
+      <label for="ipaFile">Unsigned IPA:</label>
+      <input type="file" name="ipa" id="ipaFile" accept=".ipa" required />
 
-    document.getElementById('signerForm').addEventListener('submit', function (e) {
-      e.preventDefault();
+      <label for="p12File">P12 Certificate (.p12):</label>
+      <input type="file" name="p12" id="p12File" accept=".p12" required />
 
-      // Dummy signer for now
-      const linkId = Math.random().toString(36).substring(2, 10);
-      const downloadUrl = `https://yourdomain.com/downloads/${linkId}.ipa`;
+      <label for="p12Password">P12 Password:</label>
+      <input type="password" name="p12_password" id="p12Password" required autocomplete="new-password" />
 
-      document.getElementById('downloadLink').innerHTML = `
-        ✅ IPA signed! <br>
-        <a href="${downloadUrl}" target="_blank">Click here to download (one-time use)</a>
-      `;
+      <label for="mobileProvisionFile">Mobile Provision (.mobileprovision):</label>
+      <input type="file" name="mobileprovision" id="mobileProvisionFile" accept=".mobileprovision" required />
 
-      // In real backend, mark this download as "used" after first request.
-    });
-  </script>
+      <button type="submit">Sign IPA</button>
+    </form>
+
+    <h3>Output:</h3>
+    <div id="output"></div>
+  </section>
+</main>
+
+<script src="script.js"></script>
 
 </body>
 </html>
