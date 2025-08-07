@@ -10,38 +10,65 @@
       background-color: #f4f4f4;
       margin: 0;
       padding: 0;
+      animation: fadeInBody 1s ease-in;
     }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     header {
       background-color: #007aff;
       color: white;
       padding: 20px;
       text-align: center;
+      animation: slideDown 0.5s ease-out;
     }
+
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
     nav {
       display: flex;
       justify-content: center;
       background-color: #e0e0e0;
       padding: 10px 0;
     }
+
     nav button {
       background: none;
       border: none;
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
+
     nav button:hover, nav button.active {
       background-color: #ccc;
       border-radius: 5px;
+      transform: scale(1.05);
     }
+
     .tab {
       display: none;
       padding: 40px 20px;
       text-align: center;
+      animation: fadeInTab 0.5s ease;
     }
+
+    @keyframes fadeInTab {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .tab.active {
       display: block;
     }
+
     .file-list {
       display: inline-block;
       text-align: left;
@@ -49,17 +76,37 @@
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      animation: fadeInList 0.6s ease;
     }
+
+    @keyframes fadeInList {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
     .file-item {
-      margin: 10px 0;
+      margin: 15px 0;
       font-size: 1.1em;
     }
+
     .file-item a {
       color: #007aff;
       text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
     }
+
     .file-item a:hover {
       text-decoration: underline;
+      color: #005fcc;
+    }
+
+    .section-header {
+      margin-top: 30px;
+      font-size: 1.3em;
+      color: #333;
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
     }
   </style>
 </head>
@@ -70,9 +117,9 @@
   </header>
 
   <nav>
-    <button class="tab-button active" onclick="showTab('socials')">Socials</button>
-    <button class="tab-button" onclick="showTab('configs')">Configs</button>
-    <button class="tab-button" onclick="showTab('guides')">Guides</button>
+    <button class="tab-button active" onclick="showTab('socials', event)">Socials</button>
+    <button class="tab-button" onclick="showTab('configs', event)">Configs</button>
+    <button class="tab-button" onclick="showTab('guides', event)">Guides</button>
   </nav>
 
   <div id="socials" class="tab active">
@@ -94,6 +141,14 @@
         <a href="https://ethanthedeveloper220.github.io/super-duper-invention/P12%20checker%20free%20Web%20Clip%20Profile%20(1).mobileconfig">Install Profile</a>
       </div>
     </div>
+
+    <div class="section-header">📦 IPA Store</div>
+    <div class="file-list">
+      <div class="file-item">
+        <strong>IPA Store:</strong>
+        <a href="https://ethanthedeveloper220.github.io/super-duper-invention/IPAStore.mobileconfig">Install Profile</a>
+      </div>
+    </div>
   </div>
 
   <div id="guides" class="tab">
@@ -102,7 +157,7 @@
   </div>
 
   <script>
-    function showTab(tabId) {
+    function showTab(tabId, event) {
       document.querySelectorAll('.tab').forEach(tab => {
         tab.classList.remove('active');
       });
