@@ -1,15 +1,17 @@
-/* Fonts & Base */
+/* Base Reset */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
+
+/* Fonts & Body */
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #0d0d0d;
   color: #f0f0f0;
   animation: fadeIn 0.5s ease-in;
-  padding-bottom: 50px;
+  padding-bottom: 60px;
 }
 
 @keyframes fadeIn {
@@ -27,32 +29,34 @@ header {
   box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
-/* Nav */
+/* Navigation */
 nav {
   display: flex;
   justify-content: center;
   background: #141414;
-  padding: 10px;
+  padding: 12px;
   border-bottom: 1px solid #222;
+  flex-wrap: wrap;
 }
 .tab-button {
   background: none;
   color: #ccc;
   border: 1px solid transparent;
-  margin: 0 10px;
+  margin: 5px 10px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 8px;
 }
-.tab-button:hover, .tab-button.active {
+.tab-button:hover,
+.tab-button.active {
   background: #1e1e1e;
   color: #00aaff;
   border-color: #00aaff;
 }
 
-/* Tabs */
+/* Tab Content */
 main {
   padding: 30px 20px;
 }
@@ -96,4 +100,63 @@ main {
   font-size: 0.85em;
   color: #aaa;
   margin-top: 5px;
+}
+
+/* Signer Upload Form */
+.signer-form {
+  background: #1a1a1a;
+  padding: 25px 30px;
+  border-radius: 12px;
+  border: 1px solid #2c2c2c;
+  max-width: 500px;
+  margin: 30px auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+.signer-form h2 {
+  margin-bottom: 20px;
+  color: #00aaff;
+  text-align: center;
+}
+.signer-form label {
+  display: block;
+  margin-top: 15px;
+  color: #ccc;
+  font-weight: 500;
+}
+.signer-form input[type="file"],
+.signer-form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  background: #111;
+  border: 1px solid #333;
+  color: #f0f0f0;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+.signer-form button {
+  margin-top: 20px;
+  background: #00aaff;
+  border: none;
+  color: #fff;
+  padding: 12px 18px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+.signer-form button:hover {
+  background: #008fcc;
+}
+.success-message,
+.error-message {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+}
+.success-message {
+  color: #00ff88;
+}
+.error-message {
+  color: #ff4c4c;
 }
