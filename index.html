@@ -14,12 +14,13 @@
 
   <nav>
     <button class="tab-button active" onclick="showTab('socials', event)">Socials</button>
-    <button class="tab-button" onclick="showTab('configs⬇️', event)">Configs</button>
-    <button class="tab-button" onclick="showTab('guides📝', event)">Guides</button>
-    <button class="tab-button" onclick="showTab('paid Hub 🤑', event)">Guides</button>
+    <button class="tab-button" onclick="showTab('configs', event)">Configs</button>
+    <button class="tab-button" onclick="showTab('guides', event)">Guides</button>
+    <button class="tab-button" onclick="showTab('signer', event)">IPA Signer</button>
   </nav>
 
   <main>
+    <!-- Socials Tab -->
     <section id="socials" class="tab active">
       <h2>📱 Social Links</h2>
       <div class="card-list">
@@ -29,6 +30,7 @@
       </div>
     </section>
 
+    <!-- Configs Tab -->
     <section id="configs" class="tab">
       <h2>📄 Config Files</h2>
       <div class="card-list">
@@ -44,9 +46,22 @@
       </div>
     </section>
 
+    <!-- Guides Tab -->
     <section id="guides" class="tab">
       <h2>📘 Guides</h2>
       <p>Coming soon...</p>
+    </section>
+
+    <!-- Signer Tab -->
+    <section id="signer" class="tab">
+      <h2>🔏 IPA Signer</h2>
+      <form id="signerForm">
+        <label>📦 IPA File:<br><input type="file" name="ipa" accept=".ipa" required></label><br><br>
+        <label>🔐 P12 Certificate:<br><input type="file" name="p12" accept=".p12" required></label><br><br>
+        <label>📄 MobileProvision:<br><input type="file" name="mobileprovision" accept=".mobileprovision" required></label><br><br>
+        <button type="submit">Sign IPA</button>
+      </form>
+      <div id="downloadLink" style="margin-top:20px;"></div>
     </section>
   </main>
 
@@ -57,6 +72,21 @@
       document.getElementById(tabId).classList.add('active');
       event.currentTarget.classList.add('active');
     }
+
+    document.getElementById('signerForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Dummy signer for now
+      const linkId = Math.random().toString(36).substring(2, 10);
+      const downloadUrl = `https://yourdomain.com/downloads/${linkId}.ipa`;
+
+      document.getElementById('downloadLink').innerHTML = `
+        ✅ IPA signed! <br>
+        <a href="${downloadUrl}" target="_blank">Click here to download (one-time use)</a>
+      `;
+
+      // In real backend, mark this download as "used" after first request.
+    });
   </script>
 
 </body>
