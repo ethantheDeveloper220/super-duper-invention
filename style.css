@@ -1,322 +1,162 @@
-/* Reset & Base */
+/* Fonts & Base */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  user-select: none;
 }
-
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #0a0a0a, #121212);
-  color: #e1e1e1;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 60px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  animation: fadeIn 0.6s ease forwards;
-  line-height: 1.5;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0d0d0d;
+  color: #f0f0f0;
+  animation: fadeIn 0.5s ease-in;
+  padding-bottom: 50px;
 }
 
-/* Fade-in animation */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Header */
 header {
-  background: rgba(0, 150, 255, 0.9);
-  backdrop-filter: saturate(180%) blur(14px);
-  color: #f0faff;
+  background: #1e1e1e;
+  color: #00aaff;
   text-align: center;
-  padding: 50px 20px;
-  font-size: 2.4rem;
-  font-weight: 900;
-  letter-spacing: 3px;
-  box-shadow:
-    0 6px 20px rgba(0, 160, 255, 0.8),
-    inset 0 -2px 12px rgba(255, 255, 255, 0.15);
-  user-select: none;
-  border-radius: 0 0 30px 30px;
-  text-shadow: 0 0 18px rgba(0, 210, 255, 0.6);
+  padding: 30px 20px;
+  font-size: 1.8em;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
-/* Navigation */
+/* Nav */
 nav {
   display: flex;
   justify-content: center;
-  background: rgba(15, 15, 15, 0.8);
-  backdrop-filter: saturate(190%) blur(12px);
-  padding: 16px 0;
-  border-bottom: 3px solid rgba(0, 120, 210, 0.7);
-  box-shadow: inset 0 -3px 9px rgba(0, 0, 0, 0.85);
-  user-select: none;
-  gap: 14px;
-  flex-wrap: wrap;
+  background: #141414;
+  padding: 10px;
+  border-bottom: 1px solid #222;
 }
-
 .tab-button {
-  background: transparent;
-  color: #99aabb;
-  border: 3px solid transparent;
-  padding: 14px 38px;
-  font-size: 1.15rem;
-  font-weight: 700;
+  background: none;
+  color: #ccc;
+  border: 1px solid transparent;
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
-  border-radius: 18px;
-  transition:
-    color 0.4s ease,
-    border-color 0.4s ease,
-    box-shadow 0.4s ease,
-    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  position: relative;
-  overflow: hidden;
+  transition: all 0.3s ease;
+  border-radius: 8px;
 }
-
-.tab-button:focus-visible {
-  outline: 3px solid #00ccffaa;
-  outline-offset: 3px;
-}
-
-.tab-button::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(0, 204, 255, 0.3) 10%, transparent 60%);
-  transform: translate(-50%, -50%) scale(0);
-  border-radius: 50%;
-  transition: transform 0.4s ease;
-  pointer-events: none;
-}
-
-.tab-button:active::after {
-  transform: translate(-50%, -50%) scale(1);
-  transition: transform 0s;
-}
-
-.tab-button:hover:not(.active) {
-  color: #00ccff;
-  text-shadow: 0 0 9px #00ccff88;
-  transform: scale(1.07);
-}
-
-.tab-button.active {
-  background: rgba(0, 200, 255, 0.18);
-  color: #00ccff;
-  border-color: #00ccff;
-  box-shadow:
-    0 0 20px #00ccff88,
-    inset 0 0 20px #00ccff44;
-  transform: scale(1.12);
-  text-shadow: 0 0 15px #00ccffbb;
-  pointer-events: none;
-}
-
-/* Main */
-main {
-  flex-grow: 1;
-  padding: 60px 36px 70px;
-  max-width: 980px;
-  margin: 0 auto;
-  width: 100%;
-  user-select: text;
+.tab-button:hover, .tab-button.active {
+  background: #1e1e1e;
+  color: #00aaff;
+  border-color: #00aaff;
 }
 
 /* Tabs */
+main {
+  padding: 30px 20px;
+}
 .tab {
   display: none;
-  animation: fadeIn 0.5s ease forwards;
+  animation: fadeIn 0.3s ease-in-out;
 }
-
 .tab.active {
   display: block;
 }
 
-/* Card container */
+/* Cards */
 .card-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 36px;
+  gap: 20px;
   justify-content: center;
-  margin-top: 44px;
+  margin-top: 20px;
 }
-
-/* Card style */
 .card {
-  background: rgba(30, 38, 54, 0.75);
-  border-radius: 22px;
-  border: 2px solid rgba(60, 80, 110, 0.7);
-  padding: 38px 48px;
+  background: #1a1a1a;
+  padding: 20px 30px;
   text-align: center;
-  width: 280px;
-  font-size: 1.22rem;
-  font-weight: 600;
-  color: #dceeff;
+  border: 1px solid #2c2c2c;
+  border-radius: 12px;
+  color: #f0f0f0;
   text-decoration: none;
-  box-shadow:
-    8px 8px 14px rgba(0, 0, 0, 0.75),
-    inset 0 -3px 14px rgba(255, 255, 255, 0.06),
-    inset 0 2px 8px rgba(0, 110, 180, 0.12);
-  transition:
-    background 0.4s ease,
-    box-shadow 0.4s ease,
-    color 0.35s ease,
-    transform 0.33s cubic-bezier(0.25, 1, 0.5, 1);
-  user-select: none;
-  cursor: pointer;
+  font-size: 1.1em;
+  transition: all 0.25s ease;
+  width: 250px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-
 .card:hover {
-  background: rgba(0, 160, 255, 0.28);
-  color: #cff7ff;
-  box-shadow:
-    0 0 36px rgba(0, 190, 255, 0.75),
-    inset 0 0 20px rgba(255, 255, 255, 0.2),
-    4px 6px 16px rgba(0, 120, 255, 0.85);
-  transform: scale(1.12);
+  background: #222;
+  border-color: #00aaff;
+  transform: scale(1.03);
+  color: #00aaff;
 }
-
-/* Card small text */
 .card small {
   display: block;
-  font-size: 0.9rem;
-  margin-top: 12px;
-  color: #8ed1ff;
-  font-weight: 500;
+  font-size: 0.85em;
+  color: #aaa;
+  margin-top: 5px;
 }
 
-/* Signer Form */
+/* Signer Card (form) */
 .signer-card {
-  max-width: 560px;
-  margin: 0 auto;
-  background: rgba(20, 28, 46, 0.9);
-  border-radius: 28px;
-  padding: 46px 54px;
-  color: #c7defb;
-  font-size: 1.2rem;
-  font-weight: 600;
-  box-shadow:
-    0 10px 30px rgba(0, 190, 255, 0.55),
-    inset 0 -4px 18px rgba(255, 255, 255, 0.12);
+  background: #1a1a1a;
+  padding: 25px 30px;
+  border-radius: 12px;
+  border: 1px solid #2c2c2c;
+  width: 320px;
+  margin: 20px auto 0;
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  user-select: none;
+  gap: 15px;
 }
-
 .signer-card label {
-  font-weight: 800;
-  color: #7ad1ff;
-  letter-spacing: 0.04em;
-  user-select: text;
-  transition: color 0.3s ease;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #00aaff;
 }
-
 .signer-card input[type="file"],
 .signer-card input[type="password"] {
-  background: rgba(10, 22, 36, 0.85);
-  border: 2px solid rgba(60, 90, 140, 0.9);
-  border-radius: 16px;
-  padding: 16px 18px;
-  font-size: 1.15rem;
-  color: #b8d2f9;
-  transition:
-    border-color 0.4s ease,
-    box-shadow 0.4s ease;
-  user-select: text;
+  background: #0d0d0d;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #eee;
+  padding: 10px;
+  font-size: 1em;
+  transition: border-color 0.25s ease;
 }
-
 .signer-card input[type="file"]:focus,
 .signer-card input[type="password"]:focus {
   outline: none;
-  border-color: #0099ff;
-  box-shadow: 0 0 14px #0099ffcc;
+  border-color: #00aaff;
 }
-
 .signer-card button {
-  background: linear-gradient(135deg, #00aaff, #0066cc);
+  background-color: #00aaff;
   border: none;
-  border-radius: 22px;
-  padding: 18px 44px;
-  font-weight: 900;
-  font-size: 1.4rem;
-  color: #d5f0ff;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1.1em;
+  color: #0d0d0d;
+  font-weight: 700;
   cursor: pointer;
-  user-select: none;
-  box-shadow:
-    0 0 20px #0078ffcc,
-    0 6px 24px #005fb3cc;
-  transition:
-    background 0.35s ease,
-    box-shadow 0.35s ease,
-    transform 0.3s ease;
-  align-self: center;
+  transition: background-color 0.3s ease;
 }
-
 .signer-card button:hover {
-  background: linear-gradient(135deg, #007acc, #004a8b);
-  box-shadow:
-    0 0 36px #004eaecc,
-    0 8px 30px #002f5bcc;
-  transform: scale(1.05);
+  background-color: #0088cc;
 }
 
-.signer-card button:active {
-  transform: scale(0.98);
-}
-
-/* Output Box */
+/* Output card */
 .output-card {
-  max-width: 560px;
-  margin: 38px auto 0;
-  padding: 28px 36px;
-  border-radius: 24px;
-  background: rgba(15, 20, 35, 0.9);
-  box-shadow: 0 12px 36px rgba(0, 180, 255, 0.45);
-  font-family: 'Courier New', Courier, monospace;
-  color: #65fca7;
-  min-height: 120px;
+  background: #111;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 25px auto 0;
+  max-width: 320px;
+  color: #0ff;
+  font-family: monospace;
   white-space: pre-wrap;
+  box-shadow: 0 0 10px #00aaffaa;
+  min-height: 80px;
   user-select: text;
-  transition: box-shadow 0.3s ease;
-}
-
-.output-card.error {
-  color: #ff6b6b;
-  box-shadow: 0 12px 36px rgba(255, 90, 90, 0.75);
-}
-
-/* Responsive */
-@media (max-width: 720px) {
-  main {
-    padding: 40px 24px 50px;
-  }
-  .card-list {
-    flex-direction: column;
-    gap: 32px;
-  }
-  .card, .signer-card {
-    width: 100%;
-    padding: 30px 28px;
-  }
-  nav {
-    gap: 12px;
-    padding: 18px 16px;
-  }
-  .tab-button {
-    padding: 12px 26px;
-    font-size: 1rem;
-  }
 }
